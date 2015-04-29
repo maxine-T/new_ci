@@ -25,6 +25,7 @@ SECRET_KEY = 'd9pw#lb4b_xa0#2xx@9s3id6npoi^20l_-z_1j(js0ejp82wq_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'new_ci_v2',
+    'new_ci_account',
     'new_ci_namelist_distribution',
 )
 
@@ -108,3 +110,45 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/logs/new_ci/mysite.log',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'account': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+        'namelist_distribution': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        }
+    }
+}
