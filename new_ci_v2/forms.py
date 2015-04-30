@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth import authenticate
 
@@ -35,7 +36,7 @@ class AuthenticationForm(forms.Form):
                 raise forms.ValidationError(
                     self.error_messages['invalid_login'],
                     code='invalid_login',
-                    params={'username': self.username_field.verbose_name},
+                    params={'username': username},
                 )
             else:
                 self.confirm_login_allowed(self.user_cache)

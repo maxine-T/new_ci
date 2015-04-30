@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,18 +24,26 @@
 
     <div class="container">
 
-      <form class="form-signin">{% csrf_token %}
-        <h2 class="form-signin-heading">Please sign in{{ msg }}</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <form class="form-signin" method="post"
+            action="{% url 'django.contrib.auth.views.login' %}">
+        {% csrf_token %}
+        <h2 class="form-signin-heading">Please sign in</h2>
+
+        {% if form.errors %}
+          <p style="color: red;"> * {{ form.errors.as_text|slice:"13:" }}</p>
+        {% endif %}
+
+        <label for="id_username" class="sr-only">用户名:</label>
+        <input name="username" type="text" id="id_username" class="form-control" placeholder="用户名" required autofocus>
+        <label for="id_password" class="sr-only">Password</label>
+        <input name="password" type="password" id="id_password" class="form-control" placeholder="密码" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> 记住我
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="login"> 登 录 </button>
+        <input type="hidden" name="next" value="{% url 'account_home' %}" />
       </form>
 
     </div>

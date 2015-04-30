@@ -82,8 +82,14 @@ WSGI_APPLICATION = 'new_ci_v2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'new_ci',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -101,6 +107,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Default login redirect url
+LOGIN_REDIRECT_URL = '/account/home/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -132,7 +140,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/logs/new_ci/mysite.log',
+            'filename': '/home/lmt/logs/new_ci/mysite.log',
             'formatter': 'verbose'
         }
     },
