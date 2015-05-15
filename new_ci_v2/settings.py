@@ -42,7 +42,7 @@ INSTALLED_APPS = (
 
     'new_ci_v2',
     'new_ci_account',
-    'new_ci_namelist_distribution',
+    'new_ci_namelist_management',
 )
 
 MIDDLEWARE_CLASSES = (
