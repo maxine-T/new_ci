@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'new_ci_v2',
     'new_ci_account',
     'new_ci_namelist_management',
+    'new_ci_salesman',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -154,7 +155,7 @@ LOGGING = {
             'handlers': ['file'],
             'level': 'DEBUG',
         },
-        'namelist_distribution': {
+        'namelist_management': {
             'handlers': ['file'],
             'level': 'DEBUG',
         }

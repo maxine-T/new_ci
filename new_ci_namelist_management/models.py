@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from util.setting import INFO_STATUS_CHOICES, CUSTOM_TYPE_CHOICES
 # from ast import literal_eval
 
 
@@ -7,41 +8,90 @@ class NameListSZRepertory(models.Model):
     """
     suzhou base
     """
-    nlr01 = models.CharField(max_length=32)
-    nlr02 = models.CharField(max_length=32)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_nl_sz_rep'
 
 
 class NameListJJRepertory(models.Model):
     """
     jiujiang base
     """
-    nlj01 = models.CharField(max_length=32)
-    nlj02 = models.CharField(max_length=32)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_nl_jj_rep'
 
 
 class NameListCSRepertory(models.Model):
     """
     changshu base
     """
-    nlsc01 = models.CharField(max_length=32)
-    nlsc02 = models.CharField(max_length=32)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_nl_cs_rep'
 
 
 class MerchantJJ1Repertory(models.Model):
     """
     jj pailameng
+    namelist come from NameListSZRepertory
     """
-    mj101 = models.CharField(max_length=32)
-    mj102 = models.CharField(max_length=32)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_merchant_jj1_rep'
 
 
 class MerchantJJ1RepertoryExtend(models.Model):
-    STATUS_CHOICES = (
-        (1, u'未处理'),
-        (2, u'暂存'),
-        (3, u'预约'),
-    )
-    # mjj1r = models.ForeignKey(MerchantJJ1Repertory, to_field=id)
+    """
+    jj pailameng
+    table extend for MerchantJJ1Repertory
+    """
+    mjj1r_id = models.ForeignKey(MerchantJJ1Repertory, related_name='mjj1r_ext',
+                                 blank=True, null=True, on_delete=models.SET_NULL)
     operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
     # operator field save who distribute this namelist
     salesman = models.CharField(verbose_name=u'业务员', max_length=64, default='')
@@ -49,91 +99,131 @@ class MerchantJJ1RepertoryExtend(models.Model):
     is_enable = models.BooleanField(verbose_name=u'是否有效', default=True)
     # when call back this namelist, is_enable=False
     is_assigned = models.BooleanField(verbose_name=u'是否分配', default=False)
-    status = models.CharField(verbose_name=u'处理状态', max_length=2, default='1',
-                              choices=STATUS_CHOICES)
+    info_status = models.CharField(verbose_name=u'信息状态', max_length=2, default='A',
+                                   choices=INFO_STATUS_CHOICES)
+    custom_type = models.CharField(verbose_name=u"客户类型", max_length=2, default='A',
+                                   choices=CUSTOM_TYPE_CHOICES)
+    appoint_time = models.DateTimeField(verbose_name=u'预约时间', default='')
     create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
     update_time = models.DateTimeField(verbose_name=u'更新时间', auto_now=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_merchant_jj1_rep_ext'
 
 
 class MerchantJJ2Repertory(models.Model):
     """
     jj renbao
+    namelist come from NameListJJRepertory
     """
-    mj201 = models.CharField(max_length=32)
-    mj202 = models.CharField(max_length=32)
-    operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
-    # operator field save who distribute this namelist
-    salesman = models.CharField(verbose_name=u'业务员', max_length=64, default='')
-    # salesman field save distribute namelist to which account
-    is_enable = models.BooleanField(verbose_name=u'是否有效', default=True)
-    create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
-    update_time = models.DateTimeField(verbose_name=u'更新时间', auto_now=True, null=True)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_merchant_jj2_rep'
 
 
-class MechantJJ3Repertory(models.Model):
+class MerchantJJ3Repertory(models.Model):
     """
     jj tian'an
+    namelist come from NameListJJRepertory
     """
-    mj301 = models.CharField(max_length=32)
-    mj302 = models.CharField(max_length=32)
-    operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
-    # operator field save who distribute this namelist
-    salesman = models.CharField(verbose_name=u'业务员', max_length=64, default='')
-    # salesman field save distribute namelist to which account
-    is_enable = models.BooleanField(verbose_name=u'是否有效', default=True)
-    create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
-    update_time = models.DateTimeField(verbose_name=u'更新时间', auto_now=True, null=True)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_merchant_jj3_rep'
 
 
 class MerchantSZ1Repertory(models.Model):
     """
     sz team
+    namelist come from NameListSZRepertory
     """
-    msz101 = models.CharField(max_length=32)
-    msz102 = models.CharField(max_length=32)
-    operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
-    # operator field save who distribute this namelist
-    salesman = models.CharField(verbose_name=u'业务员', max_length=64, default='')
-    # salesman field save distribute namelist to which account
-    is_enable = models.BooleanField(verbose_name=u'是否有效', default=True)
-    create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
-    update_time = models.DateTimeField(verbose_name=u'更新时间', auto_now=True, null=True)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_merchant_sz1_rep'
 
 
 class MerchantSD1Repertory(models.Model):
     """
     sd team
+    namelist come from NameListSZRepertory
     """
-    msd101 = models.CharField(max_length=32)
-    msd102 = models.CharField(max_length=32)
-    operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
-    # operator field save who distribute this namelist
-    salesman = models.CharField(verbose_name=u'业务员', max_length=64, default='')
-    # salesman field save distribute namelist to which account
-    is_enable = models.BooleanField(verbose_name=u'是否有效', default=True)
-    create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
-    update_time = models.DateTimeField(verbose_name=u'更新时间', auto_now=True, null=True)
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = 'new_ci_merchant_sd1_rep'
 
 
 class NameListAssignToMerchantRecord(models.Model):
     """
     when assign namelist from NameListXXXRepertory to some merchant repertory
-    record the distribution info;
+    record the last distribution info;
     """
-    dr01 = models.CharField(max_length=32)  # recode license_no
-    dr02 = models.CharField(max_length=255)  # save name list divide to which merchant
+    repertory_name = models.CharField(max_length=64)  # record namelist come from which rep name
+    nl_id = models.CharField(max_length=16)  # record id
+    license_no = models.CharField(max_length=64)  # record license_no
+    merchant_name = models.CharField(max_length=64)  # save name list divide to which merchant
     operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
     # save who distribute this namelist
     create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
+
+    class Meta:
+        db_table = 'new_ci_nl_to_merchant_record'
 
 
 class NameListAssignToAccountRecord(models.Model):
     """
     when assign namelist from MerchantXXXRepertory to some account
-    record the distribution info;
+    record the last distribution info;
     """
-    dr01 = models.CharField(max_length=32)  # recode license_no
-    dr02 = models.CharField(max_length=255)  # save name list divide to which account
+    repertory_name = models.CharField(max_length=64)  # record namelist come from which rep name
+    nl_id = models.CharField(max_length=16)  # record id
+    license_no = models.CharField(max_length=64)  # record license_no
+    account_id = models.CharField(max_length=64)  # save name list divide to which account
     operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
     # save who distribute this namelist
     create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
+
+    class Meta:
+        db_table = 'new_ci_nl_to_account_record'

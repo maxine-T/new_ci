@@ -27,6 +27,7 @@
 <!-- NAVBAR
 ================================================== -->
   <body>
+    {% block navbar %}
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -44,7 +45,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">NameList</a></li>
+                <li><a href="{% url 'namelist_manage_home' %}">NameList</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -68,8 +69,10 @@
 
       </div>
     </div>
+    {% endblock %}
 
-
+    {% block main_content %}
+    {% block Carousel %}
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -120,6 +123,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
+    {% endblock %}
 
 
     <!-- Marketing messaging and featurettes
@@ -127,7 +131,7 @@
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">好人2
-
+      {% block content2 %}
       <!-- Three columns of text below the carousel -->
       <div class="row">好人3
         <div class="col-lg-4">
@@ -149,8 +153,10 @@
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
+      {% endblock %}
 
 
+      {% block content3 %}
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
@@ -192,15 +198,18 @@
       <hr class="featurette-divider">
 
       <!-- /END THE FEATURETTES -->
+      {% endblock %}
 
-
+      {% block footer %}
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
+      {% endblock %}
 
     </div><!-- /.container -->
+    {% endblock %}
 
 
     {% block javascript %}
