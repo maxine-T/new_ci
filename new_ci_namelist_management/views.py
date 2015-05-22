@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from models import *
 import logging
 logger = logging.getLogger('namelist_management')
 
@@ -10,7 +11,6 @@ class NameListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         logger.debug("hello~")
-        return {'msg': u'welcome, namelist manage begin'}
-
-
-
+        nl_sz_rep = NameListSZRepertory.objects.all()
+        logger.info("nl_sz_rep is: %s" % nl_sz_rep)
+        return {'msg': u'welcome, namelist manage begin', 'nl_sz_rep': nl_sz_rep}

@@ -1,0 +1,58 @@
+/* ------------------- [BODY] ------------------- */
+body {
+    overflow-y: scroll;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    font: "Microsoft Yahei", "微软雅黑", Serif;
+    background-color: #FBFBFB;
+}
+
+textarea {
+    resize: none;
+}
+
+/*[ng-view] {*/
+    /*min-height: 500px;*/
+/*}*/
+
+/*[ngs-butterbar] {*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*margin-left: -16px;*/
+    /*margin-top: -16px;*/
+/*}*/
+
+/*[ng-file-drop] {*/
+    /*border: dotted 2px #CCCCCC;*/
+/*}*/
+
+.another-file-over-class {
+    border: dotted 2px green;
+    background: #DDDDDD;
+}
+
+/*a[ng-click] {*/
+    /*cursor:pointer;*/
+/*}*/
+
+/*-------------------[ Back to Top / #back-to-top ]-------------------*/
+#back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+    width: 45px;
+    height: 45px;
+    display: block;
+    background: #CCC;
+    font-size: 20px;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+#back-to-top:hover {
+    text-decoration: none;
+    background: rgba(85, 85, 85, 0.5);
+}
