@@ -64,34 +64,11 @@ class NameListCSRepertory(models.Model):
         db_table = 'new_ci_nl_cs_rep'
 
 
-class MerchantJJ1Repertory(models.Model):
-    """
-    jj pailameng
-    namelist come from NameListSZRepertory
-    """
-    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
-    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
-    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
-    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
-    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
-    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
-    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
-    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
-    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
-    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
-    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
-
-    class Meta:
-        db_table = 'new_ci_merchant_jj1_rep'
-
-
 class MerchantJJ1RepertoryExtend(models.Model):
     """
     jj pailameng
     table extend for MerchantJJ1Repertory
     """
-    mjj1r_id = models.ForeignKey(MerchantJJ1Repertory, related_name='mjj1r_ext',
-                                 blank=True, null=True, on_delete=models.SET_NULL)
     operator = models.CharField(verbose_name=u'操作者', max_length=64, default='')
     # operator field save who distribute this namelist
     salesman = models.CharField(verbose_name=u'业务员', max_length=64, default='')
@@ -109,6 +86,29 @@ class MerchantJJ1RepertoryExtend(models.Model):
 
     class Meta:
         db_table = 'new_ci_merchant_jj1_rep_ext'
+
+
+class MerchantJJ1Repertory(models.Model):
+    """
+    jj pailameng
+    namelist come from NameListSZRepertory
+    """
+    license_no = models.CharField(unique=True, verbose_name=u"车牌号", max_length=64)
+    car_brand = models.CharField(verbose_name=u"品牌", max_length=64, null=True, blank=True)
+    name = models.CharField(verbose_name=u"客户名", max_length=254, null=True, blank=True)
+    tel = models.CharField(verbose_name=u"固定电话", max_length=64, null=True, blank=True)
+    phone = models.CharField(verbose_name=u"手机号码", max_length=64, null=True, blank=True)
+    address = models.CharField(verbose_name=u"联系地址", max_length=254, null=True, blank=True)
+    registered_time = models.DateField(verbose_name=u"登记时间", null=True, blank=True)
+    id_no = models.CharField(verbose_name=u"身份证号", max_length=64, null=True, blank=True)
+    car_brand_no = models.CharField(verbose_name=u"车型号", max_length=64, null=True, blank=True)
+    vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
+    engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
+    mjj1r_ext = models.ForeignKey(MerchantJJ1RepertoryExtend, related_name='mjj1r_info',
+                                 blank=True, null=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        db_table = 'new_ci_merchant_jj1_rep'
 
 
 class MerchantJJ2Repertory(models.Model):

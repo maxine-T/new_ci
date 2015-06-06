@@ -143,7 +143,8 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/lmt/logs/new_ci/mysite.log',
+            # 'filename': '/home/lmt/logs/new_ci/mysite.log',
+            'filename': '/home/zzz/new_ci_v2_logs/new_ci/mysite.log',
             'formatter': 'verbose'
         }
     },

@@ -44,7 +44,6 @@ class Migration(migrations.Migration):
                 ('appoint_time', models.DateTimeField(default=b'', verbose_name='\u9884\u7ea6\u65f6\u95f4')),
                 ('create_time', models.DateTimeField(auto_now_add=True, verbose_name='\u521b\u5efa\u65f6\u95f4')),
                 ('update_time', models.DateTimeField(auto_now=True, verbose_name='\u66f4\u65b0\u65f6\u95f4', null=True)),
-                ('mjj1r_id', models.ForeignKey(related_name='mjj1r_ext', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='new_ci_namelist_management.MerchantJJ1Repertory', null=True)),
             ],
             options={
                 'db_table': 'new_ci_merchant_jj1_rep_ext',
@@ -219,5 +218,10 @@ class Migration(migrations.Migration):
             options={
                 'db_table': 'new_ci_nl_sz_rep',
             },
+        ),
+        migrations.AddField(
+            model_name='merchantjj1repertory',
+            name='mjj1r_ext',
+            field=models.ForeignKey(related_name='mjj1r_info', on_delete=django.db.models.deletion.SET_NULL, blank=True, to='new_ci_namelist_management.MerchantJJ1RepertoryExtend', null=True),
         ),
     ]

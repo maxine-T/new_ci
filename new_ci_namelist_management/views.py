@@ -13,4 +13,5 @@ class NameListView(TemplateView):
         logger.debug("hello~")
         nl_sz_rep = NameListSZRepertory.objects.all()
         logger.info("nl_sz_rep is: %s" % nl_sz_rep)
+        logger.info("nl_sz_rep count is: %s" % nl_sz_rep.count())
         return {'msg': u'welcome, namelist manage begin', 'nl_sz_rep': nl_sz_rep}

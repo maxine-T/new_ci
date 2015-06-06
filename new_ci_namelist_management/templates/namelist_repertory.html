@@ -1,20 +1,58 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base_home.html' %}
 
 {% block title %}
-    NL Management Page...
+  NL Management Page...
 {% endblock %}
 
-{% block othercss %}
-    <link href="{% static 'css/_base.css' %}" rel="stylesheet">
+{% block page_content %}
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Data Table With Full Features</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+              	<th>ID</th>
+                <th>车牌号</th>
+                <th>客户名</th>
+                <th>手机号</th>
+                <th>地址名</th>
+                <th>品牌名</th>
+                <th>车架号</th>
+                <th>登记日期</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in nl_sz_rep %}
+              <tr>
+              	<td>{{ item.id }}</td>
+                <td>{{ item.license_no }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.phone }}</td>
+                <td><a href="javascript:void(0);" title="{{ item.address|slice:':12' }}&#10;{{ item.address|slice:'12:' }}">{{ item.address|slice:':10' }}...</a></td>
+                <td>{{ item.car_brand }}</td>
+                <td>{{ item.vin_no }}</td>
+                <td>{{ item.registered_time|date:'Y-m-d' }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            <tfoot>
+            </tfoot>                    
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->    	
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 {% endblock %}
 
-{% block navbar %}
-    {% include '_nl_rep_bar.html' %}
-{% endblock %}
-
-{% block main_content %}
-    <div class="container">
-      <div class="row">好人3</div>
-    </div>
+{% block page_script %}
+    <!-- page script -->
+    <script type="text/javascript">
+      $(function () {
+        $("#example1").dataTable();
+      });
+    </script>
 {% endblock %}
