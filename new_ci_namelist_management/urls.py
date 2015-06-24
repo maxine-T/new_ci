@@ -4,9 +4,9 @@ from new_ci_namelist_management.views import *
 
 
 urlpatterns = [
-    url(r'^list/$', login_required(NameListView.as_view(),
-        login_url='/login/'), name='namelist_manage_home'),
+    url(r'^list/sz/$', login_required(SZNameListView.as_view(),
+        login_url='/login/'), name='sz_namelist_manage_home'),
 
-    url(r'^assign/batch/$', login_required(NameListAssignBatch.as_view(),
-        login_url='/login/'), name='namelist_assign_batch'),
+    url(r'^assign/batch/sz/$', login_required(SZNameListAssignBatch.as_view(),
+        login_url='/login/'), name='sz_namelist_assign_batch'),
 ]

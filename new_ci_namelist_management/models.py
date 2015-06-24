@@ -78,7 +78,7 @@ class MerchantJJ1RepertoryExtend(models.Model):
     is_assigned = models.BooleanField(verbose_name=u'是否分配', default=False)
     info_status = models.CharField(verbose_name=u'信息状态', max_length=2, default='A',
                                    choices=INFO_STATUS_CHOICES)
-    custom_type = models.CharField(verbose_name=u"客户类型", max_length=2, default='A',
+    custom_type = models.CharField(verbose_name=u"客户类型", max_length=2, default='N',
                                    choices=CUSTOM_TYPE_CHOICES)
     appoint_time = models.DateTimeField(verbose_name=u'预约时间', default='')
     create_time = models.DateTimeField(verbose_name=u'创建时间', auto_now_add=True)
@@ -105,7 +105,7 @@ class MerchantJJ1Repertory(models.Model):
     vin_no = models.CharField(verbose_name=u"车架号", max_length=128, blank=True, null=True)
     engine_no = models.CharField(verbose_name=u"发动机号", max_length=64, blank=True, null=True)
     mjj1r_ext = models.ForeignKey(MerchantJJ1RepertoryExtend, related_name='mjj1r_info',
-                                 blank=True, null=True, on_delete=models.SET_NULL)
+                                  blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         db_table = 'new_ci_merchant_jj1_rep'

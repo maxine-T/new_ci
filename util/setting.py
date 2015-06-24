@@ -12,7 +12,7 @@ INFO_STATUS_CHOICES = (
 )
 
 CUSTOM_TYPE_CHOICES = (
-    ('N', '无'),
+    ('N', u'无'),
     ('A', 'A'),
     ('B', 'B'),
     ('C', 'C'),
